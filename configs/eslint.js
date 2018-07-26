@@ -5,7 +5,7 @@ module.exports = function eslint() {
     root: true,
     extends: ['airbnb', 'prettier'],
     plugins: ['promise', 'compat', 'babel'],
-    ignore: ['esm/', 'lib/', 'build/', '*.min.js', '*.map'],
+    ignore: ['esm/', 'lib/', 'build/', '*.min.js', '*.map', 'node_modules/'],
     env: {
       browser: true,
     },
@@ -114,7 +114,6 @@ module.exports = function eslint() {
       'react/no-did-mount-set-state': 'error',
       'react/no-direct-mutation-state': 'error',
 
-      // TypeScript support
       'no-unused-vars': ['warn', { vars: 'all', args: 'none', ignoreRestSiblings: true }],
       'import/extensions': [
         'error',
@@ -129,33 +128,5 @@ module.exports = function eslint() {
       'function-paren-newline': 'off',
       'react/jsx-one-expression-per-line': 'off',
     },
-    overrides: [
-      {
-        plugins: ['jest'],
-        env: {
-          jest: true,
-          node: true,
-        },
-        files: [`tests/**/*.${EXT_PATTERN}`, `packages/*/tests/**/*.${EXT_PATTERN}`],
-        rules: {
-          'no-magic-numbers': 'off',
-          'sort-keys': 'off',
-          'import/no-extraneous-dependencies': 'off',
-          'jest/consistent-test-it': 'error',
-          'jest/lowercase-name': 'off',
-          'jest/no-identical-title': 'error',
-          'jest/no-jasmine-globals': 'error',
-          'jest/no-jest-import': 'error',
-          'jest/no-test-prefixes': 'error',
-          'jest/no-large-snapshots': 'error',
-          'jest/prefer-to-be-null': 'error',
-          'jest/prefer-to-be-undefined': 'error',
-          'jest/prefer-to-have-length': 'error',
-          'jest/valid-describe': 'error',
-          'jest/valid-expect': 'error',
-          'react/jsx-filename-extension': 'off',
-        },
-      },
-    ],
   };
 };

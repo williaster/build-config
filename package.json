@@ -3,12 +3,15 @@
   "version": "0.0.1",
   "description": "Version-controlled build config for easy re-use and sharing",
   "scripts": {
-    "eslint": "beemo eslint ./configs"
+    "lint": "beemo eslint .",
+    "prettier": "beemo prettier \"./{configs,dotfiles}/*.{js,json,md}\"",
+    "sync:gitignore": "beemo sync-dotfiles --filter=gitignore"
   },
   "beemo": {
     "module": "@local",
     "drivers": [
-      "eslint"
+      "eslint",
+      "prettier"
     ]
   },
   "repository": {
