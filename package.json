@@ -1,13 +1,15 @@
 {
   "name": "@data-ui/build-config",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Version-controlled build config for easy re-use and sharing",
   "scripts": {
     "eslint": "beemo eslint ./configs"
   },
   "beemo": {
     "module": "@local",
-    "drivers": ["eslint"]
+    "drivers": [
+      "eslint"
+    ]
   },
   "repository": {
     "type": "git",
