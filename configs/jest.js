@@ -50,6 +50,7 @@ module.exports = function jest(args, tool) {
     setupFiles,
     snapshotSerializers: ['enzyme-to-json/serializer'],
     testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
+    testURL: 'http://localhost/', // see stackoverflow.com/questions/51554366/npm-test-fail-with-jest#51554619
     transform: {
       '^.+\\.jsx?$': 'babel-jest',
     },
