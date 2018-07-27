@@ -8,14 +8,15 @@ module.exports = function jest(args, tool) {
   const workspacesEnabled = !!tool.package.workspaces;
   const setupFiles = [];
   const roots = [];
+  const testRoot = args.testRoot || 'tests';
 
   if (workspacesEnabled) {
     roots.push('<rootDir>/packages');
   } else {
-    roots.push('<rootDir>/src', '<rootDir>/tests');
+    roots.push('<rootDir>/src', `<rootDir>/${testRoot}`);
   }
 
-  const setupFilePath = path.join(process.cwd(), args.setup || './test/setup.js');
+  const setupFilePath = path.join(process.cwd(), args.setup || `./${testRoot}/setup.js`);
   if (fs.existsSync(setupFilePath)) {
     setupFiles.push(setupFilePath);
   }
