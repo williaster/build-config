@@ -8,7 +8,7 @@ module.exports = function jest(args, tool) {
   const workspacesEnabled = !!tool.package.workspaces;
   const setupFiles = [];
   const roots = [];
-  const testRoot = args.testRoot || 'tests';
+  const testRoot = args['test-dir'] || 'test';
 
   if (workspacesEnabled) {
     roots.push('<rootDir>/packages');
@@ -49,7 +49,7 @@ module.exports = function jest(args, tool) {
     roots,
     setupFiles,
     snapshotSerializers: ['enzyme-to-json/serializer'],
-    testMatch: [`**/?(*.)+(spec|test|tests).${EXT_PATTERN}`],
+    testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
     transform: {
       '^.+\\.jsx?$': 'babel-jest',
     },
