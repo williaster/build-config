@@ -25,7 +25,7 @@ This project is built with [🤖beemo](https://github.com/milesj/beemo), and the
       {
         "driver": "jest",
         "env": { "NODE_ENV": "test" }
-      }
+      },
       "prettier"
     ]
   }
