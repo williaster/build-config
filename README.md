@@ -40,11 +40,13 @@ Executing a driver will initialize 🤖Beemo's pipeline, generate configuration 
 You may define these commands as scripts:
 
 ```
+// package.json
 {
   "scripts": {
     "babel": "beemo babel ./src --out-dir ./lib",
     "eslint": "beemo eslint ./src ./tests",
     "jest": "beemo jest",
     "prettier": "beemo prettier --write \"./{src,tests}/**/*.{js,json,md}\""
+  }
 }
 ```
