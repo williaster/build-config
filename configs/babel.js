@@ -1,6 +1,7 @@
 const { MIN_IE_VERSION, MIN_NODE_VERSION } = require('./constants');
 
 module.exports = function babel(args) {
+  // plugins run 1st to last! (presets are the opposite)
   const plugins = [
     'babel-plugin-transform-export-extensions',
     ['babel-plugin-transform-dev', { evaluate: false }],
@@ -18,7 +19,7 @@ module.exports = function babel(args) {
     ]);
   }
 
-  // Order is important!
+  // presets are run last to 1st! (plugins are the opposite)
   const presets = [
     [
       'babel-preset-env',
@@ -36,6 +37,7 @@ module.exports = function babel(args) {
     presets.push('babel-preset-react');
   }
 
+  // @TODO verify this
   if (args.minify) {
     presets.push('minify');
   }
