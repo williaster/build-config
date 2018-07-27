@@ -36,7 +36,6 @@ module.exports = function babel(args) {
     presets.push('babel-preset-react');
   }
 
-
   if (args.minify) {
     presets.push('minify');
   }
