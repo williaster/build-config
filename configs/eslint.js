@@ -1,10 +1,11 @@
-const { EXTS, EXT_PATTERN } = require('./constants');
+/* eslint sort-keys: off */
+const { EXTS } = require('./constants');
 
 module.exports = function eslint() {
   return {
     root: true,
     extends: ['airbnb', 'prettier'],
-    plugins: ['promise', 'compat', 'babel'],
+    plugins: ['promise', 'compat', 'babel', 'prettier'],
     ignore: ['esm/', 'lib/', 'build/', '*.min.js', '*.map', 'node_modules/'],
     env: {
       browser: true,
@@ -48,6 +49,7 @@ module.exports = function eslint() {
       'babel/object-curly-spacing': ['error', 'always'],
       'babel/semi': 'error',
       'compat/compat': 'error', // browser compatibility
+      'prettier/prettier': 'error',
       'promise/always-return': 'error',
       'promise/avoid-new': 'off',
       'promise/catch-or-return': 'error',
@@ -67,7 +69,7 @@ module.exports = function eslint() {
       'react/no-unsafe': 'error',
 
       // Want to support but disabled in Airbnb
-      complexity: ['error', 11],
+      complexity: ['error', 11], // eslint-disable-line no-magic-numbers
       'newline-before-return': 'error',
       'no-constant-condition': 'error',
       'no-div-regex': 'error',
