@@ -2,7 +2,7 @@ exports.EXTS = ['.js', '.jsx', '.json'];
 
 exports.EXT_PATTERN = '{js,jsx}';
 
-exports.DIR_PATTERN = '{bin,src,tests}';
+exports.DIR_PATTERN = '{lib,build,bin,src,test,tests}';
 
 exports.MIN_IE_VERSION = 10;
 
