@@ -8,7 +8,7 @@ Version-controlled build config for easy re-use and sharing 📝
 npm install --save-dev @data-ui/build-config
 ```
 
-Before leveragign this build you should
+Before leveraging the build config provided you should remove any older dependencies or config files for the drivers you intend to use (e.g., remove `eslint` and `.eslintrc`). `@data-ui/build-config` will handle these dependencies, and it will *auto-generate the config files for you*.
 
 ### Using drivers
 
