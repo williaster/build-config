@@ -28,20 +28,6 @@ module.exports = function jest(args, tool) {
     coverageDirectory: './coverage',
     coveragePathIgnorePatterns: ['/node_modules/', '/esm/', '/lib/', '/build/'],
     coverageReporters: ['lcov'],
-    coverageThreshold: {
-      global: {
-        branches: 80,
-        functions: 80,
-        lines: 80,
-        statements: 80,
-      },
-      [`${workspacesEnabled ? './packages/*/' : './'}src/**/*.${EXT_PATTERN}`]: {
-        branches: 80,
-        functions: 80,
-        lines: 80,
-        statements: 80,
-      },
-    },
     globals: {
       __DEV__: true,
     },
@@ -50,10 +36,11 @@ module.exports = function jest(args, tool) {
     setupFiles,
     snapshotSerializers: ['enzyme-to-json/serializer'],
     testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
-    testURL: 'http://localhost/', // see stackoverflow.com/questions/51554366/npm-test-fail-with-jest#51554619
+    testURL: 'http://localhost/',
     transform: {
       '^.+\\.jsx?$': 'babel-jest',
     },
     verbose: !!args.verbose,
+    // @TODO support coverage thresholds
   };
 };
