@@ -4,7 +4,7 @@ module.exports = function prettier() {
   return {
     arrowParens: 'avoid',
     bracketSpacing: true,
-    ignore: ['lerna.json', 'package.json'],
+    ignore: ['lerna.json', 'package.json', 'node_modules/', 'build/'],
     jsxBracketSameLine: false,
     printWidth: 100,
     proseWrap: 'always',
