@@ -7,14 +7,14 @@ const { EXTS, EXT_PATTERN } = require('./constants');
 module.exports = function jest(args, tool) {
   const workspacesEnabled = !!tool.package.workspaces;
   const setupFiles = [];
-  const roots = [];
+  // const roots = [];
   const testRoot = args['test-dir'] || 'test';
 
-  if (workspacesEnabled) {
-    roots.push('<rootDir>/packages');
-  } else {
-    roots.push('<rootDir>/src', `<rootDir>/${testRoot}`);
-  }
+  // if (workspacesEnabled) {
+  //   roots.push('<rootDir>/packages');
+  // } else {
+  //   roots.push('<rootDir>/src', `<rootDir>/${testRoot}`);
+  // }
 
   const setupFilePath = path.join(process.cwd(), args.setup || `./${testRoot}/setup.js`);
   if (fs.existsSync(setupFilePath)) {
@@ -32,7 +32,7 @@ module.exports = function jest(args, tool) {
       __DEV__: true,
     },
     moduleFileExtensions: EXTS.map(ext => ext.slice(1)), // no period
-    roots,
+    // roots,
     setupFiles,
     snapshotSerializers: ['enzyme-to-json/serializer'],
     testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
@@ -40,7 +40,7 @@ module.exports = function jest(args, tool) {
     transform: {
       '^.+\\.jsx?$': 'babel-jest',
     },
-    verbose: !!args.verbose,
+    verbose: true,
     // @TODO support coverage thresholds
   };
 };
