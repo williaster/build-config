@@ -7,14 +7,7 @@ const { EXTS, EXT_PATTERN } = require('./constants');
 module.exports = function jest(args, tool) {
   const workspacesEnabled = !!tool.package.workspaces;
   const setupFiles = [];
-  // const roots = [];
   const testRoot = args['test-dir'] || 'test';
-
-  // if (workspacesEnabled) {
-  //   roots.push('<rootDir>/packages');
-  // } else {
-  //   roots.push('<rootDir>/src', `<rootDir>/${testRoot}`);
-  // }
 
   const setupFilePath = path.join(process.cwd(), args.setup || `./${testRoot}/setup.js`);
   if (fs.existsSync(setupFilePath)) {
@@ -26,13 +19,17 @@ module.exports = function jest(args, tool) {
 
   return {
     coverageDirectory: './coverage',
-    coveragePathIgnorePatterns: ['/node_modules/', '/esm/', '/lib/', '/build/'],
+    coveragePathIgnorePatterns: [
+      '<rootDir>/node_modules/',
+      '<rootDir>/esm/',
+      '<rootDir>/lib/',
+      '<rootDir>/build/',
+    ],
     coverageReporters: ['lcov'],
     globals: {
       __DEV__: true,
     },
     moduleFileExtensions: EXTS.map(ext => ext.slice(1)), // no period
-    // roots,
     setupFiles,
     snapshotSerializers: ['enzyme-to-json/serializer'],
     testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
