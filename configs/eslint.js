@@ -116,7 +116,7 @@ module.exports = function eslint() {
       'react/no-did-mount-set-state': 'error',
       'react/no-direct-mutation-state': 'error',
 
-      'no-unused-vars': ['warn', { vars: 'all', args: 'all', ignoreRestSiblings: true }],
+      'no-unused-vars': ['warn', { vars: 'all', args: 'after-used', ignoreRestSiblings: true }],
       'import/extensions': [
         'error',
         'never',
