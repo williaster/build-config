@@ -3,18 +3,18 @@ const { MIN_IE_VERSION, MIN_NODE_VERSION } = require('./constants');
 module.exports = function babel(args) {
   // plugins run 1st to last! (presets are the opposite)
   const plugins = [
-    'babel-plugin-transform-export-extensions',
+    '@babel/plugin-proposal-export-default-from',
     ['babel-plugin-transform-dev', { evaluate: false }],
   ];
 
   if (!args.node) {
     plugins.push([
       // Removes duplicate babel helpers
-      'babel-plugin-transform-runtime',
+      '@babel/plugin-transform-runtime',
       {
         helpers: true,
-        polyfill: true,
         regenerator: false,
+        useESModules: args.esm,
       },
     ]);
   }
@@ -22,7 +22,7 @@ module.exports = function babel(args) {
   // presets are run last to 1st! (plugins are the opposite)
   const presets = [
     [
-      'babel-preset-env',
+      '@babel/preset-env',
       {
         modules: args.esm ? false : 'commonjs',
         shippedProposals: true,
@@ -30,11 +30,10 @@ module.exports = function babel(args) {
         useBuiltIns: 'usage',
       },
     ],
-    'babel-preset-stage-2',
   ];
 
   if (args.react) {
-    presets.push('babel-preset-react');
+    presets.push('@babel/preset-react');
   }
 
   if (args.minify) {
