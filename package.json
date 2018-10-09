@@ -1,9 +1,8 @@
 {
   "name": "@data-ui/build-config",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "Version-controlled build config for easy re-use and sharing",
   "scripts": {
-    "babel": "beemo babel ./src-test --out-dir test/ --react --minify --esm",
     "lint": "beemo eslint .",
     "prettier": "beemo prettier \"./{configs,dotfiles}/*.{js,json,md}\"",
     "sync:gitignore": "beemo sync-dotfiles --filter=gitignore"
