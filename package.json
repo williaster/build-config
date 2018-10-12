@@ -1,6 +1,6 @@
 {
   "name": "@data-ui/build-config",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Version-controlled build config for easy re-use and sharing",
   "scripts": {
     "lint": "beemo eslint .",
@@ -47,7 +47,6 @@
     "babel-jest": "^23.6.0",
     "babel-plugin-transform-dev": "^2.0.1",
     "babel-preset-minify": "^0.4.3",
-    "core-js": "^2.5.7",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "enzyme-to-json": "^3.3.4",
