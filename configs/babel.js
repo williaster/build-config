@@ -1,49 +1,40 @@
-const { MIN_IE_VERSION, MIN_NODE_VERSION } = require('./constants');
+const { MIN_IE_VERSION, MIN_NODE_VERSION, IGNORE_PATHS } = require('./constants');
 
-module.exports = function babel(args) {
-  // plugins run 1st to last! (presets are the opposite)
-  const plugins = [
-    '@babel/plugin-proposal-export-default-from',
-    ['babel-plugin-transform-dev', { evaluate: false }],
-  ];
+const { context, tool } = process.beemo;
+const { args } = context;
+const env = process.env.NODE_ENV;
 
-  if (!args.node) {
-    plugins.push([
-      // Removes duplicate babel helpers
-      '@babel/plugin-transform-runtime',
-      {
-        helpers: true,
-        regenerator: false,
-        useESModules: args.esm,
-      },
-    ]);
-  }
+const plugins = [
+  '@babel/plugin-proposal-export-default-from',
+  ['babel-plugin-transform-dev', { evaluate: false }],
+];
 
-  // presets are run last to 1st! (plugins are the opposite)
-  const presets = [
-    [
-      '@babel/preset-env',
-      {
-        modules: args.esm ? false : 'commonjs',
-        shippedProposals: true,
-        targets: args.node ? { node: MIN_NODE_VERSION } : { ie: MIN_IE_VERSION },
-        useBuiltIns: 'usage',
-      },
-    ],
-  ];
+const presetEnvOptions = {
+  loose: true,
+  modules: args.esm ? false : 'commonjs',
+  shippedProposals: true,
+  targets: args.node ? { node: MIN_NODE_VERSION } : { ie: MIN_IE_VERSION },
+  useBuiltIns: 'usage',
+};
 
-  if (args.react) {
-    presets.push('@babel/preset-react');
-  }
+if (env === 'test') {
+  presetEnvOptions.modules = 'commonjs';
+  presetEnvOptions.targets = { node: 'current' };
+}
 
-  if (args.minify) {
+const presets = [['@babel/preset-env', presetEnvOptions], '@babel/preset-react'];
+
+if (args.minify) {
+  if (tool.config.babel && tool.config.babel.minify) {
+    // add config from tool
+    presets.push(['minify', tool.config.babel.minify]);
+  } else {
     presets.push('minify');
   }
+}
 
-  return {
-    babelrc: false,
-    comments: false,
-    plugins,
-    presets,
-  };
+module.exports = {
+  ignore: [...IGNORE_PATHS, '__tests__', '__mocks__'],
+  plugins,
+  presets,
 };
