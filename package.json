@@ -1,12 +1,10 @@
 {
   "name": "@data-ui/build-config",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "Version-controlled build config for easy re-use and sharing",
   "scripts": {
     "lint": "beemo eslint .",
-    "prettier": "beemo prettier \"./{configs,dotfiles}/*.{js,json,md}\"",
-    "sync:gitignore": "beemo sync-dotfiles --filter=gitignore",
-    "test:babel": "beemo babel src --out-dir ./lib --minify --react"
+    "prettier": "beemo prettier \"./{configs,dotfiles}/*.{js,json,md}\""
   },
   "beemo": {
     "module": "@local",
