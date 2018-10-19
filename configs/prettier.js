@@ -1,25 +1,15 @@
-// Package: Run in root
-// Workspaces: Run in root
-module.exports = function prettier() {
-  return {
-    arrowParens: 'avoid',
-    bracketSpacing: true,
-    ignore: [
-      'lerna.json',
-      'package.json',
-      'package-lock.json',
-      'node_modules/',
-      'build/',
-      'lib/',
-      'esm/',
-    ],
-    jsxBracketSameLine: false,
-    printWidth: 100,
-    proseWrap: 'always',
-    semi: true,
-    singleQuote: true,
-    tabWidth: 2,
-    trailingComma: 'all',
-    useTabs: false,
-  };
+import { IGNORE_PATHS } from './constants';
+
+module.exports = {
+  arrowParens: 'avoid',
+  bracketSpacing: true,
+  ignore: [...IGNORE_PATHS, 'lerna.json', 'package.json', 'package-lock.json'],
+  jsxBracketSameLine: false,
+  printWidth: 100,
+  proseWrap: 'always',
+  semi: true,
+  singleQuote: true,
+  tabWidth: 2,
+  trailingComma: 'all',
+  useTabs: false,
 };
