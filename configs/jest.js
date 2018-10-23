@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('./constants');
 
-const { context } = process.beemo;
+const { context, tool } = process.beemo;
 const { args } = context;
 const setupFiles = [];
 
@@ -16,6 +16,18 @@ if (args.react) {
   setupFiles.push(path.join(__dirname, './jest/enzyme.js'));
 }
 
+const roots = [];
+if (tool.package.workspaces) {
+  tool.package.workspaces.forEach(wsPath => {
+    // eslint-disable-next-line no-magic-numbers
+    const wsRelPath = wsPath.endsWith('/*') ? wsPath.slice(0, -2) : wsPath;
+
+    roots.push(path.join('<rootDir>', wsRelPath));
+  });
+} else {
+  roots.push('<rootDir>');
+}
+
 module.exports = {
   coverageDirectory: './coverage',
   coveragePathIgnorePatterns: [...IGNORE_PATHS],
@@ -24,6 +36,7 @@ module.exports = {
     __DEV__: true,
   },
   moduleFileExtensions: EXTS.map(ext => ext.slice(1)), // no period
+  roots,
   setupFiles,
   snapshotSerializers: ['enzyme-to-json/serializer'],
   testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
