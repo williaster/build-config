@@ -1,5 +1,5 @@
 /* eslint sort-keys: off */
-const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('./constants');
+const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require('../constants');
 
 module.exports = {
   root: true,

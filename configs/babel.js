@@ -1,4 +1,4 @@
-const { MIN_IE_VERSION, MIN_NODE_VERSION, IGNORE_PATHS } = require('./constants');
+const { MIN_IE_VERSION, MIN_NODE_VERSION, IGNORE_PATHS } = require('../constants');
 
 const { context, tool } = process.beemo;
 const { args } = context;

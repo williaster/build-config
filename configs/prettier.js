@@ -1,4 +1,4 @@
-const { IGNORE_PATHS } = require('./constants');
+const { IGNORE_PATHS } = require('../constants');
 
 module.exports = {
   arrowParens: 'avoid',
