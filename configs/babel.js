@@ -25,11 +25,10 @@ if (env === "test") {
 const presets = [["@babel/preset-env", presetEnvOptions], "@babel/preset-react"];
 
 if (args.minify) {
-  presets.push("minify", {
-    builtIns: false,
+  presets.push(["minify", {
+    removeUndefined: false,
     evaluate: false,
-    mangle: false
-  });
+  }]);
 }
 
 module.exports = {
