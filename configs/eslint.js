@@ -4,6 +4,7 @@ const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require("../constants");
 // This file could be broken into multiple files per-driver
 module.exports = {
   root: true,
+  parser: "typescript-eslint-parser",
   extends: ["airbnb", "prettier"],
   plugins: ["typescript", "promise", "compat", "babel", "prettier"],
   ignore: [
