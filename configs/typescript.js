@@ -5,7 +5,6 @@ const toolConfig = tool.config.settings || {};
 const testDir = toolConfig.testDir || context.args.testDir || "test";
 
 const compilerOptions = {
-  allowJs: true,
   allowSyntheticDefaultImports: true,
   declaration: true, // generates corresponding '.d.ts' file.
   esModuleInterop: true, // Emit __importStar and __importDefault helpers for runtime babel ecosystem compatibility and enable --allowSyntheticDefaultImports for typesystem compatibility

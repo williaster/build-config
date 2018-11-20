@@ -11,6 +11,7 @@ module.exports = {
     "babel.config.js",
     "jest.config.js",
     "prettier.config.js",
+    "tsconfig.json",
     "*.min.js",
     "*.map"
   ],
