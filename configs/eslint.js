@@ -2,11 +2,18 @@
 const path = require("path");
 const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require("../constants");
 
+const { tool } = process.beemo;
+const extendsConfig = ["airbnb", "prettier"];
+
+if (tool.config.drivers.includes("typescript")) {
+  extendsConfig.push(path.join(__dirname, "./eslint/typescript.js"));
+}
+
 // This file could be broken into multiple files per-driver
 module.exports = {
   root: true,
   parser: "babel-eslint",
-  extends: ["airbnb", "prettier", path.join(__dirname, "./eslint/typescript.js")],
+  extends: extendsConfig,
   plugins: ["promise", "compat", "babel", "prettier"],
   ignore: [
     ...IGNORE_PATHS,
