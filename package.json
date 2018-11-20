@@ -1,6 +1,6 @@
 {
   "name": "@data-ui/build-config",
-  "version": "0.0.29-rc9",
+  "version": "0.0.29",
   "description": "Version-controlled build config for easy re-use and sharing",
   "scripts": {
     "lint": "beemo eslint .",
