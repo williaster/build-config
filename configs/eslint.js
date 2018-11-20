@@ -1,10 +1,12 @@
 /* eslint sort-keys: off */
+const path = require("path");
 const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require("../constants");
 
 // This file could be broken into multiple files per-driver
 module.exports = {
   root: true,
-  extends: ["airbnb", "prettier"],
+  parser: "babel-eslint",
+  extends: ["airbnb", "prettier", path.join(__dirname, "./eslint/typescript.js")],
   plugins: ["promise", "compat", "babel", "prettier"],
   ignore: [
     ...IGNORE_PATHS,
@@ -24,9 +26,6 @@ module.exports = {
   settings: {
     polyfills: ["promises"],
     "import/extensions": EXTS,
-    "import/parsers": {
-      "typescript-eslint-parser": [".ts", ".tsx"]
-    },
     "import/resolver": {
       node: {
         extensions: EXTS
@@ -126,40 +125,9 @@ module.exports = {
     "react/no-did-mount-set-state": "error",
     "react/no-direct-mutation-state": "error",
 
-    // TypeScript support
-    "no-unused-vars": ["warn", { vars: "all", args: "none", ignoreRestSiblings: true }],
-    "import/extensions": [
-      "error",
-      "never",
-      {
-        json: "always"
-      }
-    ],
-    "react/jsx-filename-extension": ["error", { extensions: [".tsx", ".jsx"] }],
-    "typescript/adjacent-overload-signatures": "error",
-    "typescript/class-name-casing": "error",
-    "typescript/member-delimiter-style": "error",
-    "typescript/member-ordering": "error",
-    "typescript/no-angle-bracket-type-assertion": "error",
-    "typescript/no-empty-interface": "error",
-    "typescript/no-array-constructor": "error",
-    "typescript/no-triple-slash-reference": "error",
-    "typescript/no-parameter-properties": "error",
-    "typescript/no-unused-vars": "error",
-    "typescript/no-use-before-define": "error",
-    "typescript/prefer-namespace-keyword": "error",
-    "typescript/type-annotation-spacing": "error",
-
     // Doesnt work with Prettier
     "function-paren-newline": "off",
-    "react/jsx-one-expression-per-line": "off",
-
-    // Doesnt work with TypeScript
-    "no-restricted-globals": "off",
-    "no-undef": "off", // this is bad when ts + js are mixed, see https://github.com/eslint/typescript-eslint-parser/issues/77
-    "import/no-cycle": "off",
-    "import/named": "off",
-    "react/destructuring-assignment": "off"
+    "react/jsx-one-expression-per-line": "off"
   },
   overrides: [
     {
@@ -191,11 +159,6 @@ module.exports = {
         "jest/valid-expect": "error",
         "react/jsx-filename-extension": "off"
       }
-    },
-    {
-      parser: "typescript-eslint-parser",
-      plugins: ["typescript"],
-      files: ["*.{ts,tsx}"]
     }
   ]
 };
