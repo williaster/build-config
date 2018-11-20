@@ -4,9 +4,8 @@ const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require("../constants");
 // This file could be broken into multiple files per-driver
 module.exports = {
   root: true,
-  parser: "typescript-eslint-parser",
   extends: ["airbnb", "prettier"],
-  plugins: ["typescript", "promise", "compat", "babel", "prettier"],
+  plugins: ["promise", "compat", "babel", "prettier"],
   ignore: [
     ...IGNORE_PATHS,
     "babel.config.js",
@@ -157,7 +156,7 @@ module.exports = {
 
     // Doesnt work with TypeScript
     "no-restricted-globals": "off",
-    "no-undef": "off",
+    "no-undef": "off", // this is bad when ts + js are mixed, see https://github.com/eslint/typescript-eslint-parser/issues/77
     "import/no-cycle": "off",
     "import/named": "off",
     "react/destructuring-assignment": "off"
@@ -192,6 +191,11 @@ module.exports = {
         "jest/valid-expect": "error",
         "react/jsx-filename-extension": "off"
       }
+    },
+    {
+      parser: "typescript-eslint-parser",
+      plugins: ["typescript"],
+      files: ["*.{ts,tsx}"]
     }
   ]
 };
