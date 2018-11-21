@@ -43,10 +43,6 @@ module.exports = {
         "react/prop-types": "off",
 
         // TYPESCRIPT
-        "@irbnb/typescript/private-handler-methods": "error",
-        "@irbnb/typescript/react-generics-names": "error",
-        "@irbnb/typescript/react-generics-type-alias": "error",
-        "@irbnb/typescript/react-node-nonnullable": "error",
         "typescript/adjacent-overload-signatures": "error",
         "typescript/class-name-casing": "error",
         "typescript/member-delimiter-style": "error",
