@@ -19,8 +19,11 @@ module.exports = {
       plugins: ["typescript"],
       files: ["*.{ts,tsx}"],
       rules: {
-        // TypeScript support
-        "no-unused-vars": ["warn", { vars: "all", args: "none", ignoreRestSiblings: true }],
+        "no-restricted-globals": "off",
+        "no-undef": "off",
+        "no-unused-vars": "warn", // Temp (false positives: https://github.com/nzakas/eslint-plugin-typescript/issues/90)
+
+        // IMPORT
         "import/extensions": [
           "error",
           "never",
@@ -28,27 +31,35 @@ module.exports = {
             json: "always"
           }
         ],
+        "import/named": "off",
+        "import/no-cycle": "off",
+        "import/no-named-as-default": "off",
+
+        // REACT
+        "react/destructuring-assignment": "off",
         "react/jsx-filename-extension": ["error", { extensions: [".tsx", ".jsx"] }],
+        "react/no-unused-prop-types": "off",
+        "react/prefer-stateless-function": "off",
+        "react/prop-types": "off",
+
+        // TYPESCRIPT
+        "@irbnb/typescript/private-handler-methods": "error",
+        "@irbnb/typescript/react-generics-names": "error",
+        "@irbnb/typescript/react-generics-type-alias": "error",
+        "@irbnb/typescript/react-node-nonnullable": "error",
         "typescript/adjacent-overload-signatures": "error",
         "typescript/class-name-casing": "error",
         "typescript/member-delimiter-style": "error",
-        "typescript/member-ordering": "error",
+        "typescript/member-ordering": "off", // Prefer react/sort-comp
         "typescript/no-angle-bracket-type-assertion": "error",
         "typescript/no-empty-interface": "error",
         "typescript/no-array-constructor": "error",
         "typescript/no-triple-slash-reference": "error",
         "typescript/no-parameter-properties": "error",
-        "typescript/no-unused-vars": "error",
+        "typescript/no-unused-vars": "warn",
         "typescript/no-use-before-define": "error",
         "typescript/prefer-namespace-keyword": "error",
-        "typescript/type-annotation-spacing": "error",
-
-        // Doesnt work with TypeScript
-        "no-restricted-globals": "off",
-        "no-undef": "off", // this is bad when ts + js are mixed, see https://github.com/eslint/typescript-eslint-parser/issues/77
-        "import/no-cycle": "off",
-        "import/named": "off",
-        "react/destructuring-assignment": "off"
+        "typescript/type-annotation-spacing": "error"
       }
     }
   ]
