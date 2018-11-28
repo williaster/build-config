@@ -14,7 +14,7 @@ const presetEnvOptions = {
   modules: args.esm ? false : "commonjs",
   shippedProposals: true,
   targets: args.node ? { node: MIN_NODE_VERSION } : { ie: MIN_IE_VERSION },
-  useBuiltIns: "usage"
+  useBuiltIns: false,
 };
 
 if (env === "test") {
