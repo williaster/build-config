@@ -44,7 +44,8 @@ module.exports = {
   testMatch: [`**/?(*.)+(spec|test).${EXT_PATTERN}`],
   testURL: "http://localhost/",
   transform: {
-    "^.+\\.(t|j)sx?$": "babel-jest"
+    '^.+\\.jsx?$': 'babel-jest',
+    '^.+\\.tsx?$': 'ts-jest',
   },
   verbose: true
 };
