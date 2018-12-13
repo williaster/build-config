@@ -6,6 +6,8 @@ const env = process.env.NODE_ENV;
 
 const plugins = [
   "@babel/plugin-proposal-export-default-from",
+  "@babel/plugin-syntax-class-properties",
+  "@babel/plugin-syntax-dynamic-import",
   ["babel-plugin-transform-dev", { evaluate: false }]
 ];
 
