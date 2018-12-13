@@ -6,7 +6,7 @@ const env = process.env.NODE_ENV;
 
 const plugins = [
   "@babel/plugin-proposal-export-default-from",
-  "@babel/plugin-syntax-class-properties",
+  "@babel/plugin-proposal-class-properties",
   "@babel/plugin-syntax-dynamic-import",
   ["babel-plugin-transform-dev", { evaluate: false }]
 ];
@@ -16,7 +16,7 @@ const presetEnvOptions = {
   modules: args.esm ? false : "commonjs",
   shippedProposals: true,
   targets: args.node ? { node: MIN_NODE_VERSION } : { ie: MIN_IE_VERSION },
-  useBuiltIns: false,
+  useBuiltIns: false
 };
 
 if (env === "test") {
