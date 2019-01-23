@@ -1,6 +1,7 @@
 // Package: Run in root
 // Workspaces: Run in each package (copied into each)
 const path = require("path");
+
 const { context, tool } = process.beemo;
 const toolConfig = tool.config.settings || {};
 const testDir = toolConfig.testDir || context.args.testDir || "test";

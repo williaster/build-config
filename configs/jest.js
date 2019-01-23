@@ -3,11 +3,14 @@ const path = require("path");
 const { EXTS, EXT_PATTERN, IGNORE_PATHS } = require("../constants");
 
 const { context, tool } = process.beemo;
-const { node, react, testDir = "test" } = tool.config.settings;
+const { react, testDir = "test" } = tool.config.settings;
 const { args } = context;
 const setupFiles = [];
 
-const setupFilePath = path.join(process.cwd(), args.setup || `./${testDir}/setup.js`);
+const setupFilePath = path.join(
+  process.cwd(),
+  args.setup || `./${testDir}/setup.js`
+);
 if (fs.existsSync(setupFilePath)) {
   setupFiles.push(setupFilePath);
 }

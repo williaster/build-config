@@ -37,7 +37,10 @@ module.exports = {
 
         // REACT
         "react/destructuring-assignment": "off",
-        "react/jsx-filename-extension": ["error", { extensions: [".tsx", ".jsx"] }],
+        "react/jsx-filename-extension": [
+          "error",
+          { extensions: [".tsx", ".jsx"] }
+        ],
         "react/no-unused-prop-types": "off",
         "react/prefer-stateless-function": "off",
         "react/prop-types": "off",

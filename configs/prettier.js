@@ -1,15 +1,15 @@
-const { IGNORE_PATHS } = require('../constants');
+const { IGNORE_PATHS } = require("../constants");
 
 module.exports = {
-  arrowParens: 'avoid',
+  arrowParens: "avoid",
   bracketSpacing: true,
-  ignore: [...IGNORE_PATHS, 'lerna.json', 'package.json', 'package-lock.json'],
+  ignore: [...IGNORE_PATHS, "lerna.json", "package.json", "package-lock.json"],
   jsxBracketSameLine: false,
   printWidth: 100,
-  proseWrap: 'always',
+  proseWrap: "always",
   semi: true,
   singleQuote: true,
   tabWidth: 2,
-  trailingComma: 'all',
-  useTabs: false,
+  trailingComma: "all",
+  useTabs: false
 };
