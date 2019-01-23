@@ -65,7 +65,11 @@ module.exports = {
     "babel/object-curly-spacing": ["error", "always"],
     "babel/semi": "error",
     "compat/compat": "error", // browser compatibility
-    "lines-between-class-members": ["error", "always", { exceptAfterSingleLine: true }],
+    "lines-between-class-members": [
+      "error",
+      "always",
+      { exceptAfterSingleLine: true }
+    ],
     "prettier/prettier": "error",
     "promise/always-return": "error",
     "promise/avoid-new": "off",

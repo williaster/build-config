@@ -1,4 +1,8 @@
-const { MIN_IE_VERSION, MIN_NODE_VERSION, IGNORE_PATHS } = require("../constants");
+const {
+  MIN_IE_VERSION,
+  MIN_NODE_VERSION,
+  IGNORE_PATHS
+} = require("../constants");
 
 const { context, tool } = process.beemo;
 const { args } = context;
@@ -24,7 +28,10 @@ if (env === "test") {
   presetEnvOptions.targets = { node: "current" };
 }
 
-const presets = [["@babel/preset-env", presetEnvOptions], "@babel/preset-react"];
+const presets = [
+  ["@babel/preset-env", presetEnvOptions],
+  "@babel/preset-react"
+];
 
 if (args.minify) {
   presets.push([
