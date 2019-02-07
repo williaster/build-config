@@ -26,6 +26,14 @@ const presetEnvOptions = {
 if (env === "test") {
   presetEnvOptions.modules = "commonjs";
   presetEnvOptions.targets = { node: "current" };
+  plugins.push([
+    "@babel/plugin-transform-runtime",
+    {
+      helpers: true,
+      regenerator: true,
+      useESModules: !!context.args.esm
+    }
+  ]);
 }
 
 const presets = [
