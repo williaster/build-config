@@ -46,7 +46,8 @@ if (args.minify) {
     "minify",
     {
       removeUndefined: false,
-      evaluate: false
+      evaluate: false,
+      builtIns: false,
     }
   ]);
 }
